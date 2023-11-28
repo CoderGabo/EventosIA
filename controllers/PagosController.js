@@ -53,8 +53,8 @@ exports.createSession = async(req, res) =>{
     const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
         mode: 'payment',
-        success_url: `http://localhost:5173/sucess/${req.params.codigoEvento}/${req.params.CIinvitado}`,
-        cancel_url: `http://localhost:5173/cancel/${req.params.codigoEvento}/${req.params.CIinvitado}`
+        success_url: `https://6566200cf2ab3d13b96e63b2--playful-bavarois-f4f232.netlify.app/sucess/${req.params.codigoEvento}/${req.params.CIinvitado}`,
+        cancel_url: `https://6566200cf2ab3d13b96e63b2--playful-bavarois-f4f232.netlify.app/cancel/${req.params.codigoEvento}/${req.params.CIinvitado}`
     });
 
     return res.json(session)
