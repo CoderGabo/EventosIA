@@ -2,19 +2,12 @@ const {Sequelize} = require('sequelize');
 require('dotenv').config();
 
 const sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASSWORD,
+    'FotosRekognition',
+    'postgres',
+    'Restaurante',
     {
-        host: process.env.DB_HOST,
+        host: 'localhost',
         dialect: "postgres",
-        timezone: process.env.DB_TZ,
-        dialectOptions: {
-            ssl: {
-                require: true,
-            },
-        },
-
     }
 );
 

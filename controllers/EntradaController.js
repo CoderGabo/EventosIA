@@ -128,7 +128,7 @@ exports.generarQR = async(req, res, next) => {
             const email = invitado.toJSON().invitado.persona.email;
             const nombre = invitado.toJSON().invitado.persona.nombre;
 
-            const url = `http://localhost:5173/${encodeURIComponent(nombre)}/${CIinvitado}/${codigo_evento}`
+            const url = `http://192.168.240.89:5173/${encodeURIComponent(nombre)}/${CIinvitado}/${codigo_evento}`
             const codigoQR = await qr.toDataURL(url);
             console.log(url);
 
