@@ -26,7 +26,6 @@ exports.createSession = async(req, res) =>{
         if (match) {
           const rutaDesdeAlbum = match[0].substring(1);
           const rutaSinextension = rutaDesdeAlbum.replace(/\.jpg$/, '')
-          console.log(rutaSinextension);
           datos.listaFotografias.push(rutaSinextension)
         }
         // Utilizar la propiedad urlAgua como clave para identificar elementos únicos
@@ -53,8 +52,8 @@ exports.createSession = async(req, res) =>{
     const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
         mode: 'payment',
-        success_url: `https://playful-bavarois-f4f232.netlify.app/sucess/${req.params.codigoEvento}/${req.params.CIinvitado}`,
-        cancel_url: `https://playful-bavarois-f4f232.netlify.app/cancel/${req.params.codigoEvento}/${req.params.CIinvitado}`
+        success_url: `http://localhost:5173/sucess/${req.params.codigoEvento}/${req.params.CIinvitado}`,
+        cancel_url: `http://localhost:5173/cancel/${req.params.codigoEvento}/${req.params.CIinvitado}`
     });
 
     return res.json(session)
