@@ -28,8 +28,6 @@ app.use(fileUpload({
 //Rutas de la app
 app.use('/',routes());
 
-port = 5000
-
 app.listen(PORT, () => {
     console.log(`El servidor esta funcionando en el puerto: ${PORT}`)
 })
