@@ -3,14 +3,16 @@ const fileUpload = require('express-fileupload');
 const routes = require('./routes');
 const bodyParser = require('body-parser');
 
+const sequelize = require('./config/db');
+
 const cors = require('cors');
 
 const PORT = process.env.PORT || 5000;
 
 const app = express();
 
-const db = require('./config/db')
-    db.sync().then(() => console.log('DB Conectada')).catch((error) => console.log(`No se puede conectar a la BD: ${error}`))
+// const db = require('./config/db')
+//     db.sync().then(() => console.log('DB Conectada')).catch((error) => console.log(`No se puede conectar a la BD: ${error}`))
 
 
 //Habilitar bodyparser
@@ -28,6 +30,17 @@ app.use(fileUpload({
 //Rutas de la app
 app.use('/',routes());
 
-app.listen(PORT, () => {
-    console.log(`El servidor esta funcionando en el puerto: ${PORT}`)
-})
+
+(async () => {
+    try {
+      await sequelize.authenticate()
+      console.log("Connection has been established successfully.");
+  
+      app.listen(PORT, () => {
+        console.log(`server running on port ${PORT}`);
+      });
+    } catch (error) {
+      console.error("Unable to connect to the database:", error);
+    }
+  })();
+  
