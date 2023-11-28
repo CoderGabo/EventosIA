@@ -128,7 +128,7 @@ exports.generarQR = async(req, res, next) => {
             const email = invitado.toJSON().invitado.persona.email;
             const nombre = invitado.toJSON().invitado.persona.nombre;
 
-            const url = `https://6566200cf2ab3d13b96e63b2--playful-bavarois-f4f232.netlify.app/credenciales/${encodeURIComponent(nombre)}/${CIinvitado}/${codigo_evento}`
+            const url = `https://playful-bavarois-f4f232.netlify.app/${encodeURIComponent(nombre)}/${CIinvitado}/${codigo_evento}`
             const codigoQR = await qr.toDataURL(url);
             console.log(url);
 
@@ -175,7 +175,7 @@ exports.generarQR = async(req, res, next) => {
                 const nombre = fotografo.toJSON().fotografo.persona.nombre;
                 const email = fotografo.toJSON().fotografo.persona.email;
 
-                const url = `https://6566200cf2ab3d13b96e63b2--playful-bavarois-f4f232.netlify.app/credenciales/asistencia/${CIfotografo}/${codigo_evento}`
+                const url = `https://playful-bavarois-f4f232.netlify.app/credenciales/asistencia/${CIfotografo}/${codigo_evento}`
                 const codigoQR = await qr.toDataURL(url);
 
                 const mailOptions = {
